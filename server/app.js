@@ -8,6 +8,7 @@ require("dotenv").config();
 const port = process.env.PORT || 5001;
 
 const app = express();
+app.use(cors());
 
 
 //30mb is the max image size you can upload
@@ -15,7 +16,6 @@ app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 
 // to connect my server side with client side 
-app.use(cors());
 app.use('/recipes', recipeRouter);
 
 mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true },

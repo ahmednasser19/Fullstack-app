@@ -1,10 +1,17 @@
 import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
+import React, { useEffect } from 'react';
+import { useDispatch } from "react-redux";
 import Recipes from './Components/Recipes/Recipes';
 import Form from './Components/Form/Form';
 import img1 from './images/food.png';
+import { getRecipes } from './actions/recipes'
 import useStyles from './styles';
 const App = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getRecipes());
+  }, [])
 
   return (
     < Container maxWidth="lg" >
